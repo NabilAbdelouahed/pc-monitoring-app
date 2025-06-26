@@ -1,4 +1,6 @@
 from flask import Flask
+from functions import *
+
 
 app = Flask("pc-monitor")
 
