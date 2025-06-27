@@ -1,6 +1,7 @@
 import secrets
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 load_dotenv()
 
@@ -26,6 +27,10 @@ def write_to_env(key,value,filename='.env'):
     except  Exception as e:
         print(f"Error writing to {filename}: {e}")
 
-def genarte_token():
+def generate_token():
     token = secrets.token_urlsafe(32)
+    current_date = str(datetime.now().date())
+    write_to_env("API_TOKEN",token)
+    write_to_env("TOKEN_EXP",current_date)
 
+generate_token()
