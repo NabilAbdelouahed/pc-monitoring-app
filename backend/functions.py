@@ -2,7 +2,7 @@ import secrets
 from dotenv import load_dotenv
 import os
 from datetime import datetime
-import psutil
+import psutil, time
 
 load_dotenv()
 
@@ -106,3 +106,13 @@ def get_running_apps(limit=15):
     )
     sorted_dict = {pid: data for pid, data in sorted_items[:limit]}
     return sorted_dict
+
+def fetch_data():
+    data = {
+        "cpu" : get_cpu_info(),
+        "ram" : get_ram_info(),
+        "disk" : get_disk_info(),
+        "network" : get_network_info(),
+        "apps" : get_running_apps()
+    } 
+    return data
