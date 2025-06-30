@@ -35,14 +35,27 @@ def generate_token():
     write_to_env("TOKEN_EXP",current_date)
 
 def get_cpu_info():
-    cpu_info = {"physicalCores": psutil.cpu_count(logical=False),
-                "totalCores": psutil.cpu_count(logical=True),
-                "cpuUsagePerCore": {i : percentage 
-                                    for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1))},
-                "totalCpuUsage": psutil.cpu_percent(),
-                #"temperature": {
-                #    name: [entry.current for entry in entries]
-                #    for name, entries in psutil.sensors_temperatures().items()
-                #                }                
+    cpu_info = {
+        "physicalCores" : psutil.cpu_count(logical=False),
+        "totalCores" : psutil.cpu_count(logical=True),
+        "cpuUsagePerCore" : {i : percentage 
+                            for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1))},
+        "totalCpuUsage" : psutil.cpu_percent(),
+        #"temperature" : {
+        #    name: [entry.current for entry in entries]
+        #    for name, entries in psutil.sensors_temperatures().items()
+        #                }                
                 }
     return cpu_info
+
+def get_ram_info():
+    svmem = psutil.virtual_memory()
+    ram_info = {
+        "total" : svmem.total,
+        "available" : svmem.available,
+        "used" : svmem.used,
+        "use_percentage" : svmem.percent
+    }
+    return ram_info
+
+print(get_ram_info())
