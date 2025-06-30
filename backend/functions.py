@@ -45,7 +45,7 @@ def get_cpu_info():
         #    name: [entry.current for entry in entries]
         #    for name, entries in psutil.sensors_temperatures().items()
         #                }                
-                }
+    }
     return cpu_info
 
 def get_ram_info():
@@ -58,4 +58,20 @@ def get_ram_info():
     }
     return ram_info
 
-print(get_ram_info())
+def get_disk_info():
+    disk_info = {}
+    partitions = psutil.disk_partitions()
+    for partition in partitions:
+        device = partition.device
+        try :
+            usage = psutil.disk_usage(partition.mountpoint)
+            disk_info[device] = {
+                "total_size" : usage.total,
+                "used" : usage.used,
+                "free" : usage.free,
+                "use_percentage" : usage.percent
+            }
+        except PermissionError:
+            continue
+    return disk_info
+
