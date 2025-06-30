@@ -83,3 +83,26 @@ def get_network_info():
     }
     return network_info
 
+
+def get_running_apps(limit=15):
+    process_dict = {}
+
+    for proc in psutil.process_iter(['pid', 'name', 'username', 'cpu_percent', 'memory_info']):
+        try:
+            proc_info = proc.info
+            process_dict[proc_info['pid']] = {
+                'name': proc_info['name'],
+                'username': proc_info['username'],
+                'cpuPercent': proc_info['cpu_percent'],
+                'memUsage': proc_info['memory_info'].rss
+            }
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            continue
+        
+    sorted_items = sorted(
+        process_dict.items(), 
+        key=lambda item: (item[1]['memUsage'], item[1]['cpuPercent']),
+        reverse=True
+    )
+    sorted_dict = {pid: data for pid, data in sorted_items[:limit]}
+    return sorted_dict
