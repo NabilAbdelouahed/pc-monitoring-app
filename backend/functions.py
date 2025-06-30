@@ -75,3 +75,11 @@ def get_disk_info():
             continue
     return disk_info
 
+def get_network_info():
+    net_io = psutil.net_io_counters()
+    network_info = {
+        "sent" : net_io.bytes_sent,
+        "received" : net_io.bytes_recv
+    }
+    return network_info
+
