@@ -2,6 +2,7 @@ import secrets
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+import psutil
 
 load_dotenv()
 
@@ -33,4 +34,15 @@ def generate_token():
     write_to_env("API_TOKEN",token)
     write_to_env("TOKEN_EXP",current_date)
 
-generate_token()
+def get_cpu_info():
+    cpu_info = {"physicalCores": psutil.cpu_count(logical=False),
+                "totalCores": psutil.cpu_count(logical=True),
+                "cpuUsagePerCore": {i : percentage 
+                                    for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1))},
+                "totalCpuUsage": psutil.cpu_percent(),
+                #"temperature": {
+                #    name: [entry.current for entry in entries]
+                #    for name, entries in psutil.sensors_temperatures().items()
+                #                }                
+                }
+    return cpu_info
