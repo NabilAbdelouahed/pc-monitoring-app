@@ -25,8 +25,8 @@ def fetch_data():
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
-    username = data.get("DASH_USER")
-    password = data.get("DASH_PWD")
+    username = data.get("username")
+    password = data.get("password")
 
     if is_credential_valid(username,password):
         generate_token()
@@ -37,4 +37,4 @@ def login():
 
 
 if __name__ == '__main__' :
-    app.run('127.0.0.1',5000)
+    app.run(host=BASE_URL, port=PORT)

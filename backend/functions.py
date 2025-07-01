@@ -5,7 +5,8 @@ from datetime import datetime
 import psutil, time
 
 load_dotenv()
-
+BASE_URL = os.getenv("BASE_URL")
+PORT = int(os.getenv("PORT"))
 
 def write_to_env(key,value,filename='.env'):
     try :
