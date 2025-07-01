@@ -117,7 +117,7 @@ def get_running_apps(limit=15):
     sorted_dict = {pid: data for pid, data in sorted_items[:limit]}
     return sorted_dict
 
-def fetch_data():
+def get_data():
     data = {
         "cpu" : get_cpu_info(),
         "ram" : get_ram_info(),

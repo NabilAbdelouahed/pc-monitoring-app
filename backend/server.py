@@ -18,7 +18,7 @@ def fetch_data():
     
     return jsonify({
         "status": "ok",
-        "data": fetch_data(),
+        "data": get_data(),
         "timestamp": int(time.time())
     })
 
@@ -29,6 +29,7 @@ def login():
     password = data.get("DASH_PWD")
 
     if is_credential_valid(username,password):
+        generate_token()
         return jsonify(get_token())
     
     return jsonify({"error": "Invalid credentials"}), 401
