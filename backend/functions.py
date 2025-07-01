@@ -31,12 +31,12 @@ def write_to_env(key,value,filename='.env'):
 
 def generate_token():
     token = secrets.token_urlsafe(32)
-    current_date = str(datetime.now().date())
+    exp_time = int(time.time()) + 86400   # valid 1 day
     write_to_env("API_TOKEN",token)
-    write_to_env("TOKEN_EXP",current_date)
+    write_to_env("TOKEN_EXP",exp_time)
 
 def is_token_valid(token, request_time):
-    return token == os.getenv("API_TOKEN") and request_time == os.getenv("TOKEN_EXP")
+    return token == os.getenv("API_TOKEN") and request_time < int(os.getenv("TOKEN_EXP"))
 
 def get_cpu_info():
     cpu_info = {
