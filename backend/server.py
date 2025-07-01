@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from functions import *
 
 
@@ -10,7 +10,17 @@ def status():
 
 @app.route("/data" , methods=['POST'])
 def fetch_data():
-    return True
+    token = request.headers.get("Authorization", "").replace("Bearer ", "")
+    now = int(time.time())
+
+    if not token or not is_token_valid(token, now):
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    return jsonify({
+        "status": "ok",
+        "data": fetch_data(),
+        "timestamp": int(time.time())
+    })
 
 @app.route("/login", methods=["POST"])
 def login():
