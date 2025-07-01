@@ -24,7 +24,14 @@ def fetch_data():
 
 @app.route("/login", methods=["POST"])
 def login():
-    return True
+    data = request.get_json()
+    username = data.get("DASH_USER")
+    password = data.get("DASH_PWD")
+
+    if is_credential_valid(username,password):
+        return jsonify(get_token())
+    
+    return jsonify({"error": "Invalid credentials"}), 401
 
 
 

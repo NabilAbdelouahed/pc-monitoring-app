@@ -41,6 +41,9 @@ def is_token_valid(token, request_time):
 def is_credential_valid(username, pwd):
     return username == os.getenv("DASH_USER") and pwd == os.getenv("DASH_PWD")
 
+def get_token():
+    return {"token" : os.getenv("API_TOKEN"), "expire" : int(os.getenv("TOKEN_EXP"))}
+
 def get_cpu_info():
     cpu_info = {
         "physicalCores" : psutil.cpu_count(logical=False),
