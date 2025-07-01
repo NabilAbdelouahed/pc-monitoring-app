@@ -6,6 +6,7 @@ import psutil, time
 
 load_dotenv()
 
+
 def write_to_env(key,value,filename='.env'):
     try :
         with open(filename, "r") as file:
@@ -33,6 +34,9 @@ def generate_token():
     current_date = str(datetime.now().date())
     write_to_env("API_TOKEN",token)
     write_to_env("TOKEN_EXP",current_date)
+
+def is_token_valid(token, request_time):
+    return token == os.getenv("API_TOKEN") and request_time == os.getenv("TOKEN_EXP")
 
 def get_cpu_info():
     cpu_info = {
