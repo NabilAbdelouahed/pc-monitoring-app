@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from functions import *
 
 
 app = Flask("pc-monitor")
+CORS(app)
 
 @app.route("/")
 def status():
