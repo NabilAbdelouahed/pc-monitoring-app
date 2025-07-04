@@ -14,7 +14,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 if (response.ok) {
   const data = await response.json();
   localStorage.setItem("dashToken", data.token); 
-  alert("Login successful! Token: " + data.token);
+  window.location.href = "dashboard.html";
 } else {
   alert("Login failed!");
 }
