@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 1rem;
+  background-color: #1b1818;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: aliceblue;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+section {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
