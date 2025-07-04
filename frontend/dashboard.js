@@ -26,4 +26,4 @@ function updateDashboard(data) {
   document.querySelector("#apps pre").textContent = JSON.stringify(data.apps, null, 2);
 }
 
-setInterval(fetchData, 2000); // refresh every 2 seconds
+setInterval(fetchData, DASH_REFRESH_RATE);

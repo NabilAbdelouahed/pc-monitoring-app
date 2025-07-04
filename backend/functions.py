@@ -2,7 +2,7 @@ import secrets
 from dotenv import load_dotenv
 import os
 from datetime import datetime
-import psutil, time
+import psutil, time, bcrypt
 
 load_dotenv()
 BASE_URL = os.getenv("BASE_URL")
@@ -39,8 +39,11 @@ def generate_token():
 def is_token_valid(token, request_time):
     return token == os.getenv("API_TOKEN") and request_time < int(os.getenv("TOKEN_EXP"))
 
+def hash_password(pwd):
+    return bcrypt.hashpw(pwd.encode(), bcrypt.gensalt()).decode()
+
 def is_credential_valid(username, pwd):
-    return username == os.getenv("DASH_USER") and pwd == os.getenv("DASH_PWD")
+    return username == os.getenv("DASH_USER") and bcrypt.checkpw(pwd.encode(), os.getenv("DASH_PWD").encode())
 
 def get_token():
     return {"token" : os.getenv("API_TOKEN"), "expire" : int(os.getenv("TOKEN_EXP"))}
