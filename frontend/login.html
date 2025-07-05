@@ -9,13 +9,16 @@
 </head>
 
 <body>
-  <form id="loginForm">
-    <label for="DASH_USER">Username:</label>
-    <input type="text" id="DASH_USER" name="DASH_USER" required />
-    <label for="DASH_PWD">Password:</label>
-    <input type="password" id="DASH_PWD" name="DASH_PWD" required />
-    <button type="submit">Login</button>
-  </form>
+  <div id="loginContainer">
+    <form id="loginForm">
+      <label for="DASH_USER">Username:</label>
+      <input type="text" id="DASH_USER" name="DASH_USER" required />
+      <label for="DASH_PWD">Password:</label>
+      <input type="password" id="DASH_PWD" name="DASH_PWD" required />
+      <button type="submit">Login</button>
+    </form>
+    <h4 id="loginStatus"></h4>
+  </div>
   <script src="config.js"></script>
   <script src="./login.js"></script>
 </body>

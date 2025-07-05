@@ -9,6 +9,15 @@ body {
   margin: 0;
 }
 
+#loginStatus {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #4d4a4a;
+  font-weight: 500;
+  min-height: 1.2em;
+}
+
 #loginForm {
   background: white;
   padding: 30px 40px;
