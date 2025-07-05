@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from functions import *
+import time
+
 
 
 app = Flask("pc-monitor")
@@ -24,6 +26,7 @@ def fetch_data():
         "timestamp": int(time.time())
     })
 
+
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
@@ -33,7 +36,8 @@ def login():
     if is_credential_valid(username,password):
         generate_token()
         return jsonify(get_token())
-    
+    else:
+        time.sleep(1.5)
     return jsonify({"error": "Invalid credentials"}), 401
 
 
