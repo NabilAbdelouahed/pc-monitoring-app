@@ -135,9 +135,9 @@ function updateDashboard(data) {
 
   // CPU
   cpuInfoDiv.innerHTML = `
-    <strong>Total CPU Usage:</strong> ${cpuData.totalCpuUsage}%<br>
-    <strong>Physical Cores:</strong> ${cpuData.physicalCores}<br>
-    <strong>Total Cores:</strong> ${cpuData.totalCores}
+    <strong>Physical Cores:</strong> ${cpuData.physicalCores}<br> 
+    <strong>Total Cores:</strong> ${cpuData.totalCores}<br> 
+    <strong>Total CPU Usage:</strong> ${cpuData.totalCpuUsage}% 
   `;
   const usagePerCore = Object.values(cpuData.cpuUsagePerCore);
   pushPoint(perCoreChart, "", usagePerCore);
@@ -145,7 +145,10 @@ function updateDashboard(data) {
   // RAM
   const usedGB = (ramData.used / 1e9).toFixed(1);
   const totalGB = (ramData.total / 1e9).toFixed(1);
-  ramInfoDiv.innerHTML = `<strong>Total RAM:</strong> ${totalGB} GB`;
+  ramInfoDiv.innerHTML = `
+  <strong>Total RAM:</strong> ${totalGB} GB<br> 
+  <strong>Used RAM:</strong> ${usedGB} GB
+  `;
   pushPoint(ramChart, "", [parseFloat(usedGB)]);
 
   // Disk
@@ -176,8 +179,8 @@ function updateDashboard(data) {
   };
 
   networkDiv.innerHTML = `
-    <strong>Received:</strong> ${(networkData.received / 1e6).toFixed(1)} MB<br>
-    <strong>Sent:</strong> ${(networkData.sent / 1e6).toFixed(1)} MB<br>
+    <strong>Received:</strong> ${(networkData.received / 1e6).toFixed(1)} MB<br> 
+    <strong>Sent:</strong> ${(networkData.sent / 1e6).toFixed(1)} MB<br> 
     <strong>Speed:</strong> ↓ ${deltaRx.toFixed(1)} KB/s | ↑ ${deltaTx.toFixed(1)} KB/s
   `;
 
