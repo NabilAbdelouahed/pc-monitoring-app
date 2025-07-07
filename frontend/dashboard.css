@@ -59,3 +59,39 @@ button#toggleCpuView {
 #apps th {
   background: #f0f0f0;
 }
+
+/* Add to your CSS file */
+
+body.dark-mode {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode #diskBars .bar-bg {
+  background: #333;
+}
+
+body.dark-mode .bar-fill {
+  background: #81c784; /* lighter green */
+}
+
+body.dark-mode #apps th {
+  background: #333;
+  color: #eee;
+}
+
+body.dark-mode #apps td, 
+body.dark-mode #apps th {
+  border-color: #555;
+}
+
+body.dark-mode button#toggleCpuView,
+body.dark-mode button#toggleDarkMode {
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+body.dark-mode button#toggleDarkMode:hover {
+  background-color: #555;
+}

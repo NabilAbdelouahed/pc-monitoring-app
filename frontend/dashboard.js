@@ -1,5 +1,16 @@
 const token = localStorage.getItem("dashToken");
 
+const toggleDarkModeBtn = document.getElementById("toggleDarkMode");
+
+toggleDarkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  if (document.body.classList.contains("dark-mode")) {
+    toggleDarkModeBtn.textContent = "Switch to Light Mode";
+  } else {
+    toggleDarkModeBtn.textContent = "Switch to Dark Mode";
+  }
+});
+
 const cpuInfoDiv = document.createElement("div");
 const ramInfoDiv = document.createElement("div");
 const diskInfoDiv = document.getElementById("diskInfo");
