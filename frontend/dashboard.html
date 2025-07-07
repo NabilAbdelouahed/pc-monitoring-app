@@ -6,19 +6,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monitoring Dashboard</title>
   <link rel="stylesheet" type="text/css" href="./dashboard.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
   <h1>PC Monitoring Dashboard</h1>
   <div id="dashboard">
-    <section id="cpu"><h2>CPU</h2><pre></pre></section>
-    <section id="ram"><h2>RAM</h2><pre></pre></section>
-    <section id="disk"><h2>Disk</h2><pre></pre></section>
-    <section id="network"><h2>Network</h2><pre></pre></section>
-    <section id="apps"><h2>Running Apps</h2><pre></pre></section>
+
+    <section id="cpu">
+      <h2>CPU</h2>
+      <div id="cpuInfo"></div>
+      <canvas id="cpuChart"></canvas>
+    </section>
+
+    <section id="ram">
+      <h2>RAM</h2>
+      <div id="ramInfo"></div>
+      <canvas id="ramChart"></canvas>
+    </section>
+
+    <section id="disk">
+      <h2>Disk</h2>
+      <div id="diskInfo"></div>
+      <div id="diskBars"></div>
+    </section>
+
+    <section id="network">
+      <h2>Network</h2>
+      <div id="networkInfo"></div>
+      <canvas id="networkChart"></canvas>
+    </section>
+
+    <section id="apps">
+      <h2>Running Apps</h2>
+      <table id="appsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>CPU %</th>
+            <th>Memory Usage</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
   </div>
 
   <script src="./config.js"></script>
   <script src="./dashboard.js"></script>
 </body>
+
 </html>
