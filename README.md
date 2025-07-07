@@ -23,6 +23,12 @@ An app that collects data on your pc using APIs(cpu usage, ram usage, running ap
 - Backend: Python Flask
 - Token-based authentication
 
+## Improvements 
+
+- Make the dashboard more compact
+- cache data that doesn't chane frequently (like disk storage) to improve refresh rate.
+- For nvidia GPUs, it is easy to monitor them using gputils. But since I have an AMD GPU it is harder to do especially on windows. I just wanted to make a simple dashboard that work for all hardware for the time being.
+
 ![light-mode](./light-mode.png)
 ![dark-mode](./dark-mode.png)
 
